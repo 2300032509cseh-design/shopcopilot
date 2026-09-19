@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './BusinessAnalyticsTab.css';
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:5050/api';
+
 export default function BusinessAnalyticsTab() {
   const [analytics, setAnalytics] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -13,7 +15,7 @@ export default function BusinessAnalyticsTab() {
       const token = localStorage.getItem('shop_copilot_token');
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
-      const res = await fetch('http://127.0.0.1:5050/api/analytics', { headers });
+      const res = await fetch(`${API_BASE}/analytics`, { headers });
       if (!res.ok) {
         throw new Error(`Server returned status ${res.status}`);
       }

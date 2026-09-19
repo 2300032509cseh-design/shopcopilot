@@ -28,6 +28,8 @@ const QUICK_PICK_PRODUCTS = [
   { id: 12, name: 'Shampoo', category: 'Personal Care', qty: 50, unit: 'bottles', price: 180, cost: 150, selected: false }
 ];
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:5050/api';
+
 export default function OnboardingWizard({ onClose, onImportSuccess, onVoiceImport }) {
   const [activeTab, setActiveTab] = useState('csv'); // 'csv' | 'voice' | 'pick'
   const [csvText, setCsvText] = useState('');
@@ -64,7 +66,7 @@ export default function OnboardingWizard({ onClose, onImportSuccess, onVoiceImpo
     setMessage(null);
 
     try {
-      const res = await fetch('http://127.0.0.1:5050/api/inventory/import-csv', {
+      const res = await fetch(`${API_BASE}/inventory/import-csv`, {
         method: 'POST',
         headers: getHeaders(),
         body: JSON.stringify({ csv_text: csvText })
@@ -126,7 +128,7 @@ export default function OnboardingWizard({ onClose, onImportSuccess, onVoiceImpo
     setMessage(null);
 
     try {
-      const res = await fetch('http://127.0.0.1:5050/api/inventory/bulk-add', {
+      const res = await fetch(`${API_BASE}/inventory/bulk-add`, {
         method: 'POST',
         headers: getHeaders(),
         body: JSON.stringify({
@@ -162,7 +164,7 @@ export default function OnboardingWizard({ onClose, onImportSuccess, onVoiceImpo
   const handleLoadDemo = async () => {
     setLoading(true);
     try {
-      const res = await fetch('http://127.0.0.1:5050/api/inventory/seed-demo', {
+      const res = await fetch(`${API_BASE}/inventory/seed-demo`, {
         method: 'POST',
         headers: getHeaders()
       });

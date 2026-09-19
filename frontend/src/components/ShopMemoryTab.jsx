@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './ShopMemoryTab.css';
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:5050/api';
+
 export default function ShopMemoryTab({ shop, onTriggerVoicePrompt }) {
   const [memories, setMemories] = useState([]);
   const [vocab, setVocab] = useState([]);
@@ -16,9 +18,9 @@ export default function ShopMemoryTab({ shop, onTriggerVoicePrompt }) {
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
       const [memRes, vocabRes, analyticsRes] = await Promise.all([
-        fetch('http://127.0.0.1:5050/api/memory', { headers }),
-        fetch('http://127.0.0.1:5050/api/vocabulary', { headers }),
-        fetch('http://127.0.0.1:5050/api/analytics', { headers }),
+        fetch(`${API_BASE}/memory`, { headers }),
+        fetch(`${API_BASE}/vocabulary`, { headers }),
+        fetch(`${API_BASE}/analytics`, { headers }),
       ]);
 
       const memData = await memRes.json();
@@ -49,7 +51,7 @@ export default function ShopMemoryTab({ shop, onTriggerVoicePrompt }) {
         ...(token ? { Authorization: `Bearer ${token}` } : {})
       };
 
-      const res = await fetch('http://127.0.0.1:5050/api/memory', {
+      const res = await fetch(`${API_BASE}/memory`, {
         method: 'POST',
         headers,
         body: JSON.stringify({ key: newKey, value: newValue, memory_type: 'preference' }),

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './SuppliersTab.css';
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:5050/api';
+
 export default function SuppliersTab({ onTriggerVoicePrompt }) {
   const [suppliers, setSuppliers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,7 +18,7 @@ export default function SuppliersTab({ onTriggerVoicePrompt }) {
       const token = localStorage.getItem('shop_copilot_token');
       const headers = token ? { Authorization: `Bearer ${token}` } : {};
 
-      const res = await fetch('http://127.0.0.1:5050/api/suppliers', { headers });
+      const res = await fetch(`${API_BASE}/suppliers`, { headers });
       const data = await res.json();
       if (data.success) {
         setSuppliers(data.suppliers || []);
@@ -43,7 +45,7 @@ export default function SuppliersTab({ onTriggerVoicePrompt }) {
         ...(token ? { Authorization: `Bearer ${token}` } : {})
       };
 
-      const res = await fetch('http://127.0.0.1:5050/api/suppliers', {
+      const res = await fetch(`${API_BASE}/suppliers`, {
         method: 'POST',
         headers,
         body: JSON.stringify({
