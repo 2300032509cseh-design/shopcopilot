@@ -30,7 +30,7 @@ import {
   HelpCircle
 } from 'lucide-react';
 
-const API_BASE = 'http://127.0.0.1:5050/api';
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:5050/api';
 
 export default function App() {
   const [user, setUser] = useState(() => {
