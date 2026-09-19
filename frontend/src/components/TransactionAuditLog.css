@@ -1,0 +1,131 @@
+.audit-card {
+  width: 100%;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.audit-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.audit-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.audit-icon {
+  color: var(--blue-dark);
+}
+
+.audit-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--blue-dark);
+  margin: 0;
+}
+
+.audit-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.audit-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+
+.audit-table th {
+  text-align: left;
+  padding: 12px 14px;
+  color: var(--text-soft);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 2px solid var(--border);
+}
+
+.audit-table td {
+  padding: 14px;
+  border-bottom: 1px solid rgba(27, 54, 93, 0.08);
+  color: var(--text);
+  vertical-align: middle;
+}
+
+.audit-table tr:hover td {
+  background: var(--blue-soft);
+}
+
+.timestamp-cell {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.product-cell {
+  font-weight: 700;
+  color: var(--blue-dark);
+}
+
+.action-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.action-badge.add {
+  background: var(--green-soft);
+  color: var(--green);
+  border: 1px solid rgba(46, 125, 84, 0.3);
+}
+
+.action-badge.remove {
+  background: var(--red-soft);
+  color: var(--red);
+  border: 1px solid rgba(185, 74, 78, 0.3);
+}
+
+.quantity-cell {
+  font-weight: 700;
+}
+
+.source-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-soft);
+}
+
+.source-icon.voice {
+  color: var(--blue);
+}
+
+.source-icon.manual {
+  color: var(--text-muted);
+}
+
+.raw-text-cell {
+  font-style: italic;
+  font-size: 12px;
+  color: var(--text-soft);
+}
+
+.empty-audit-row {
+  text-align: center;
+  padding: 36px 14px;
+  color: var(--text-muted);
+}

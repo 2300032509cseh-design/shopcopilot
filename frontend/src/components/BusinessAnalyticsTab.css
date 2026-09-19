@@ -1,0 +1,215 @@
+.analytics-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #0f172a;
+}
+
+.analytics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.analytics-header h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.analytics-header .subtitle {
+  margin: 4px 0 0 0;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.refresh-btn {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #0f172a;
+  transition: all 0.2s ease;
+}
+
+.refresh-btn:hover {
+  background: #e2e8f0;
+}
+
+.analytics-loading {
+  text-align: center;
+  padding: 60px;
+  font-size: 1.1rem;
+  color: #475569;
+}
+
+.analytics-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.kpi-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.kpi-card.accent {
+  border-left: 4px solid #3b82f6;
+}
+
+.kpi-card.success {
+  border-left: 4px solid #10b981;
+}
+
+.kpi-card.info {
+  border-left: 4px solid #8b5cf6;
+}
+
+.kpi-icon {
+  font-size: 2rem;
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.kpi-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.kpi-label {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.kpi-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 2px 0;
+}
+
+.kpi-sub {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.analytics-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.analytics-section h3 {
+  margin-top: 0;
+  margin-bottom: 4px;
+  font-size: 1.25rem;
+  color: #0f172a;
+}
+
+.section-desc {
+  color: #64748b;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.margins-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.margins-table th,
+.margins-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 0.9rem;
+}
+
+.margins-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.margins-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.margins-table .product-name {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.cat-badge {
+  background: #e2e8f0;
+  color: #334155;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.price-cell {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.price-cell.cost {
+  color: #64748b;
+}
+
+.profit-cell {
+  font-weight: 700;
+  color: #059669;
+}
+
+.val-cell {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.margin-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.margin-badge.good {
+  background: #d1fae5;
+  color: #047857;
+}
+
+.margin-badge.normal {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.empty-row {
+  text-align: center;
+  color: #94a3b8;
+  padding: 30px;
+}

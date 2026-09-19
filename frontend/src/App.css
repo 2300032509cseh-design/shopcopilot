@@ -1,0 +1,1247 @@
+/* =========================================================
+   SHOP COPILOT - APP LAYOUT
+========================================================= */
+
+:root {
+  --bg: #f4f1ea;
+  --surface: #ffffff;
+  --surface-soft: #f8f7f4;
+
+  --text: #0f172a;
+  --text-soft: #334155;
+  --text-muted: #475569;
+
+  --blue: #365e8d;
+  --blue-dark: #1b365d;
+  --blue-soft: #e4ecf5;
+
+  --green: #2e7d54;
+  --yellow: #d69e46;
+  --red: #b94a4e;
+
+  --border: rgba(27, 54, 93, 0.18);
+
+  --shadow-sm:
+    0 4px 14px rgba(15, 23, 42, 0.08);
+
+  --shadow-md:
+    0 12px 32px rgba(15, 23, 42, 0.12);
+
+  --radius: 18px;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+
+  font-family:
+    'Plus Jakarta Sans',
+    Arial,
+    sans-serif;
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      circle at 5% 0%,
+      rgba(115, 147, 179, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 95% 10%,
+      rgba(226, 177, 108, 0.10),
+      transparent 28%
+    ),
+    var(--bg);
+
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+/* =========================================================
+   MAIN APP CONTAINER
+========================================================= */
+
+.app-container {
+  width: 100%;
+  max-width: 1500px;
+
+  min-height: 100vh;
+
+  margin: 0 auto;
+
+  padding:
+    20px
+    28px
+    28px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.app-header {
+  width: 100%;
+  min-height: 72px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(230px, 1fr)
+    auto
+    auto;
+
+  align-items: center;
+
+  gap: 24px;
+
+  padding: 10px 14px 10px 18px;
+
+  background:
+    rgba(255, 255, 255, 0.86);
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 20px;
+
+  box-shadow: var(--shadow-sm);
+
+  backdrop-filter: blur(16px);
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand-logo {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+}
+
+.brand-icon {
+  width: 44px;
+  height: 44px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 13px;
+
+  background: var(--blue-soft);
+
+  font-size: 21px;
+}
+
+.brand-copy {
+  min-width: 0;
+}
+
+.brand-title {
+  font-family: 'Outfit', sans-serif;
+
+  color: var(--blue-dark);
+
+  font-size: 18px;
+  font-weight: 700;
+
+  letter-spacing: 0.04em;
+}
+
+.brand-subtitle {
+  margin-top: 3px;
+
+  color: var(--text-muted);
+
+  font-size: 11px;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   HEADER STATUS
+========================================================= */
+
+.header-status {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 7px 11px;
+
+  border-radius: 999px;
+
+  background:
+    rgba(94, 146, 120, 0.09);
+
+  color: var(--green);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.header-user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.shop-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.user-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: var(--surface-soft);
+  color: var(--text-soft);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  color: var(--red);
+  transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+  background: var(--red-soft);
+  border-color: rgba(201, 111, 115, 0.4);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--green);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(94, 146, 120, 0.10);
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.nav-tabs {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  padding: 4px;
+
+  border-radius: 13px;
+
+  background:
+    rgba(31, 41, 55, 0.045);
+}
+
+.nav-btn {
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 0 12px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: transparent;
+
+  color: var(--text-muted);
+
+  font-size: 11px;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-btn:hover {
+  color: var(--blue-dark);
+
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.nav-btn.active {
+  color: var(--blue-dark);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 3px 10px
+    rgba(31, 41, 55, 0.08);
+}
+
+.nav-btn b {
+  min-width: 18px;
+  height: 18px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 5px;
+
+  border-radius: 999px;
+
+  background: var(--blue-soft);
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   MAIN COPILOT GRID
+========================================================= */
+
+.main-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    330px;
+
+  gap: 18px;
+
+  align-items: start;
+
+  min-width: 0;
+
+  flex: 1;
+}
+
+
+/* =========================================================
+   LEFT CONTENT
+========================================================= */
+
+.main-column {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   RIGHT INSIGHTS
+========================================================= */
+
+.insights-column {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   SINGLE PAGE TABS
+========================================================= */
+
+.single-page {
+  width: 100%;
+  min-width: 0;
+
+  flex: 1;
+}
+
+
+/* =========================================================
+   GENERIC GLASS CARD
+========================================================= */
+
+.glass-card {
+  background:
+    rgba(255, 255, 255, 0.82);
+
+  border:
+    1px solid var(--border);
+
+  border-radius: var(--radius);
+
+  box-shadow: var(--shadow-sm);
+
+  backdrop-filter: blur(16px);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .app-container {
+    padding: 18px 20px 24px;
+  }
+
+  .main-grid {
+    grid-template-columns:
+      minmax(0, 1fr)
+      300px;
+  }
+
+  .nav-btn {
+    padding: 0 9px;
+  }
+
+}
+
+
+@media (max-width: 1000px) {
+
+  .app-header {
+    grid-template-columns:
+      1fr auto;
+
+    gap: 14px;
+  }
+
+  .header-status {
+    display: none;
+  }
+
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insights-column {
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .app-container {
+    padding: 10px;
+
+    gap: 12px;
+  }
+
+  .app-header {
+    grid-template-columns: 1fr;
+
+    padding: 12px;
+
+    gap: 10px;
+  }
+
+  .brand-subtitle {
+    white-space: normal;
+  }
+
+  .nav-tabs {
+    width: 100%;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+  }
+
+  .nav-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-btn {
+    flex: 1;
+
+    min-width: max-content;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .brand-title {
+    font-size: 16px;
+  }
+
+  .brand-subtitle {
+    font-size: 10px;
+  }
+
+  .nav-btn {
+    padding: 0 8px;
+
+    font-size: 10px;
+  }
+
+  .nav-btn b {
+    display: none;
+  }
+
+}@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #f3f0e9;
+
+  --surface: #ffffff;
+  --surface-soft: #f8f7f3;
+
+  --text: #0f172a;
+  --text-soft: #334155;
+  --text-muted: #475569;
+
+  --blue: #365e8d;
+  --blue-dark: #1b365d;
+  --blue-soft: #e4ecf5;
+
+  --green: #2e7d54;
+  --green-soft: #eaf4ee;
+
+  --yellow: #d69e46;
+  --yellow-soft: #fbf3e6;
+
+  --red: #b94a4e;
+  --red-soft: #faeded;
+
+  --border: rgba(27, 54, 93, 0.18);
+
+  --shadow-sm:
+    0 5px 18px rgba(15, 23, 42, 0.08);
+
+  --shadow-md:
+    0 14px 36px rgba(15, 23, 42, 0.12);
+
+  --radius: 18px;
+
+  /* Compatibility variables used by VoiceCopilotBar */
+  --accent-ochre-light: #fbf3e6;
+  --accent-ochre-dark: #7a5223;
+  --border-sand: rgba(27, 54, 93, 0.18);
+
+  --accent-denim-dark: #1b365d;
+  --accent-faded-denim: #365e8d;
+  --accent-denim-light: #e4ecf5;
+  --accent-soft-ochre: #d69e46;
+}
+
+/* =========================================
+   GLOBAL RESET
+   ========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  min-width: 320px;
+  min-height: 100vh;
+
+  font-family:
+    'Plus Jakarta Sans',
+    Arial,
+    sans-serif;
+
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      circle at 5% 0%,
+      rgba(100, 140, 175, 0.13),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 95% 8%,
+      rgba(214, 163, 94, 0.10),
+      transparent 28%
+    ),
+    var(--bg);
+
+  overflow-x: hidden;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* =========================================
+   MAIN APP CONTAINER
+   ========================================= */
+
+.app-container {
+  width: 100%;
+  max-width: 1500px;
+  min-height: 100vh;
+
+  margin: 0 auto;
+  padding: 20px 28px 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.app-header {
+  width: 100%;
+  min-height: 86px;
+
+  display: grid;
+  grid-template-columns:
+    minmax(280px, 1fr)
+    auto
+    auto;
+
+  align-items: center;
+
+  gap: 28px;
+
+  padding: 12px 18px 12px 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.97),
+      rgba(249, 247, 242, 0.94)
+    );
+
+  border: 1px solid rgba(63, 102, 137, 0.13);
+
+  border-radius: 22px;
+
+  box-shadow:
+    0 8px 28px rgba(45, 55, 72, 0.07),
+    0 2px 5px rgba(45, 55, 72, 0.04);
+
+  backdrop-filter: blur(18px);
+}
+
+/* =========================================
+   BRAND
+   ========================================= */
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  min-width: 0;
+}
+
+.brand-icon {
+  width: 54px;
+  height: 54px;
+
+  flex-shrink: 0;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #7fa4c7,
+      #527b9f
+    );
+
+  color: white;
+
+  font-size: 27px;
+
+  box-shadow:
+    0 8px 20px rgba(82, 123, 159, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.brand-copy {
+  min-width: 0;
+}
+
+.brand-title {
+  font-family:
+    'Outfit',
+    'Plus Jakarta Sans',
+    sans-serif;
+
+  font-size: 27px;
+  line-height: 1;
+
+  font-weight: 800;
+
+  letter-spacing: 0.055em;
+
+  background:
+    linear-gradient(
+      90deg,
+      #365b7d,
+      #668caf
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand-subtitle {
+  margin-top: 7px;
+
+  color: #718096;
+
+  font-size: 12px;
+  font-weight: 500;
+
+  letter-spacing: 0.015em;
+}
+
+/* =========================================
+   HEADER STATUS
+   ========================================= */
+
+.header-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 8px 12px;
+
+  border-radius: 999px;
+
+  background: rgba(95, 146, 120, 0.09);
+
+  color: var(--green);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: var(--green);
+
+  box-shadow:
+    0 0 0 4px rgba(95, 146, 120, 0.10);
+
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+}
+
+/* =========================================
+   NAVIGATION
+   ========================================= */
+
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  padding: 4px;
+
+  border-radius: 13px;
+
+  background: rgba(36, 52, 71, 0.045);
+}
+
+.nav-btn {
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 0 13px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: transparent;
+
+  color: var(--text-muted);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-btn:hover {
+  color: var(--blue-dark);
+
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.nav-btn.active {
+  color: var(--blue-dark);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 4px 12px rgba(31, 41, 55, 0.08);
+}
+
+.nav-btn b {
+  min-width: 19px;
+  height: 19px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 5px;
+
+  border-radius: 999px;
+
+  background: var(--blue-soft);
+
+  font-size: 9px;
+}
+
+/* =========================================
+   MAIN GRID
+   ========================================= */
+
+.main-grid {
+  width: 100%;
+  min-width: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    330px;
+
+  gap: 18px;
+
+  align-items: start;
+
+  flex: 1;
+}
+
+.main-column {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+.insights-column {
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.single-page {
+  width: 100%;
+  min-width: 0;
+
+  flex: 1;
+}
+
+/* =========================================
+   GENERIC CARD
+   ========================================= */
+
+.glass-card {
+  background:
+    rgba(255, 255, 255, 0.88);
+
+  border:
+    1px solid var(--border);
+
+  border-radius:
+    var(--radius);
+
+  box-shadow:
+    var(--shadow-sm);
+
+  backdrop-filter:
+    blur(16px);
+}
+
+/* =========================================
+   GENERIC BUTTONS
+   ========================================= */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  border: none;
+  border-radius: 10px;
+
+  padding: 9px 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #729abc,
+      #527b9f
+    );
+
+  color: white;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  box-shadow:
+    0 5px 14px rgba(82, 123, 159, 0.18);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.btn-primary:hover {
+  background:
+    linear-gradient(
+      135deg,
+      #648caf,
+      #456d90
+    );
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 18px rgba(82, 123, 159, 0.24);
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+.btn-secondary {
+  border: 1px solid var(--border);
+
+  border-radius: 9px;
+
+  background: var(--surface-soft);
+
+  color: var(--text-soft);
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--blue-soft);
+  border-color: rgba(100, 140, 175, 0.25);
+}
+
+/* =========================================
+   INPUT
+   ========================================= */
+
+.app-input {
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.app-input:focus {
+  border-color: var(--blue);
+
+  box-shadow:
+    0 0 0 3px rgba(100, 140, 175, 0.10);
+}
+
+/* =========================================
+   INSIGHTS
+   ========================================= */
+
+.insights-column > div {
+  width: 100%;
+}
+
+.insights-column .glass-card {
+  width: 100%;
+}
+
+/* =========================================
+   BADGES
+   ========================================= */
+
+.badge-critical,
+.badge-success {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 5px 8px;
+
+  border-radius: 999px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  white-space: nowrap;
+}
+
+.badge-critical {
+  background: var(--red-soft);
+  color: var(--red);
+}
+
+.badge-success {
+  background: var(--green-soft);
+  color: var(--green);
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 1200px) {
+  .app-container {
+    padding:
+      18px 20px 24px;
+  }
+
+  .main-grid {
+    grid-template-columns:
+      minmax(0, 1fr)
+      300px;
+  }
+
+  .nav-btn {
+    padding: 0 10px;
+  }
+
+  .brand-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .app-header {
+    grid-template-columns:
+      1fr
+      auto;
+
+    gap: 14px;
+  }
+
+  .header-status {
+    display: none;
+  }
+
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .insights-column {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .app-container {
+    padding: 10px;
+    gap: 12px;
+  }
+
+  .app-header {
+    grid-template-columns: 1fr;
+
+    padding: 13px;
+
+    gap: 12px;
+  }
+
+  .brand-title {
+    font-size: 22px;
+  }
+
+  .brand-subtitle {
+    white-space: normal;
+  }
+
+  .nav-tabs {
+    width: 100%;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+  }
+
+  .nav-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-btn {
+    flex: 1;
+    min-width: max-content;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-icon {
+    width: 47px;
+    height: 47px;
+
+    font-size: 23px;
+  }
+
+  .brand-title {
+    font-size: 19px;
+  }
+
+  .brand-subtitle {
+    font-size: 10px;
+  }
+
+  .nav-btn {
+    padding: 0 8px;
+    font-size: 10px;
+  }
+
+  .nav-btn b {
+    display: none;
+  }
+}
