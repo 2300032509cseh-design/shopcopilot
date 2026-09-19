@@ -250,7 +250,8 @@ def init_db():
         ]
         cursor.executemany("""
             INSERT INTO products (name, category, quantity, unit, price, purchase_price, reorder_level, avg_daily_usage, supplier_lead_days, shop_id)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON CONFLICT DO NOTHING;
         """, seed_products)
 
         # Seed suppliers
@@ -262,7 +263,8 @@ def init_db():
         ]
         cursor.executemany("""
             INSERT INTO suppliers (name, products_supplied, contact_phone, typical_lead_days, shop_id)
-            VALUES (?, ?, ?, ?, ?);
+            VALUES (?, ?, ?, ?, ?)
+            ON CONFLICT DO NOTHING;
         """, seed_suppliers)
 
         # Seed custom vocabulary
@@ -273,7 +275,8 @@ def init_db():
         ]
         cursor.executemany("""
             INSERT INTO vocabulary (term, equivalent_qty, equivalent_unit, shop_id)
-            VALUES (?, ?, ?, ?);
+            VALUES (?, ?, ?, ?)
+            ON CONFLICT DO NOTHING;
         """, seed_vocab)
 
         print("[DB] Seeded Demo User, Shop, 10 Products, Suppliers, and Vocabulary!")
