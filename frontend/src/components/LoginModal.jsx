@@ -1,50 +1,12 @@
 import React, { useState } from 'react';
-import { ShoppingBag, Lock, Mail, Store, ArrowRight, UserPlus, LogIn, AlertCircle } from 'lucide-react';
+import { ShoppingBag, Lock, Mail, Store, ArrowRight, LogIn, AlertCircle, Sparkles, CheckCircle2 } from 'lucide-react';
 import './LoginModal.css';
 
 export default function LoginModal({ onLoginSuccess, apiBase }) {
-  const [isRegister, setIsRegister] = useState(false);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-  const [shopName, setShopName] = useState('');
+  const [email, setEmail] = useState('demo@shopcopilot.com');
+  const [password, setPassword] = useState('password123');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
-
-    const endpoint = isRegister ? '/auth/register' : '/auth/login';
-    const payload = isRegister
-      ? { email, password, name, shop_name: shopName }
-      : { email, password };
-
-    try {
-      const res = await fetch(`${apiBase}${endpoint}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.error || 'Authentication failed');
-      }
-
-      // Store in localStorage
-      localStorage.setItem('shop_copilot_token', data.token);
-      localStorage.setItem('shop_copilot_user', JSON.stringify(data.user));
-
-      onLoginSuccess(data.user, data.token);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleDemoLogin = async () => {
     setError('');
@@ -54,8 +16,8 @@ export default function LoginModal({ onLoginSuccess, apiBase }) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: 'demo@shopcopilot.com',
-          password: 'password123'
+          email: email || 'demo@shopcopilot.com',
+          password: password || 'password123'
         })
       });
 
@@ -67,10 +29,15 @@ export default function LoginModal({ onLoginSuccess, apiBase }) {
 
       onLoginSuccess(data.user, data.token);
     } catch (err) {
-      setError(err.message);
+      setError(err.message || 'Error connecting to demo server');
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleDemoLogin();
   };
 
   return (
@@ -83,9 +50,18 @@ export default function LoginModal({ onLoginSuccess, apiBase }) {
           </div>
           <h2 className="auth-title">SHOP COPILOT</h2>
           <p className="auth-subtitle">
-            {isRegister
-              ? 'Create an account to manage your shop voice inventory'
-              : 'Your shop speaks. Copilot understands.'}
+            Voice-first inventory & intelligence for small shops
+          </p>
+        </div>
+
+        {/* Demo Mode Feature Badge */}
+        <div className="demo-notice-banner">
+          <div className="demo-notice-header">
+            <Sparkles size={16} color="#4F46E5" />
+            <span>🎯 Live Demo Mode</span>
+          </div>
+          <p className="demo-notice-text">
+            Pre-loaded with <strong>Sah's Store</strong> inventory, custom vocabulary, multilingual Telugu voice assistant, and analytics.
           </p>
         </div>
 
@@ -97,48 +73,38 @@ export default function LoginModal({ onLoginSuccess, apiBase }) {
           </div>
         )}
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="auth-form">
-          {isRegister && (
+        {/* 1-Click Launch Demo Button */}
+        <button
+          type="button"
+          onClick={handleDemoLogin}
+          disabled={loading}
+          className="demo-primary-btn"
+        >
+          {loading ? (
+            <span>🧠 Logging into Demo Shop...</span>
+          ) : (
             <>
-              <div className="auth-field">
-                <label>Your Name</label>
-                <div className="input-wrapper">
-                  <Mail size={16} className="input-icon" />
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Sah"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
-                </div>
-              </div>
-
-              <div className="auth-field">
-                <label>Shop Name</label>
-                <div className="input-wrapper">
-                  <Store size={16} className="input-icon" />
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Sah's Store"
-                    value={shopName}
-                    onChange={(e) => setShopName(e.target.value)}
-                  />
-                </div>
-              </div>
+              <span>⚡ Launch Sah's Store (Demo)</span>
+              <ArrowRight size={18} />
             </>
           )}
+        </button>
 
+        {/* Divider */}
+        <div className="auth-divider">
+          <span>or sign in with credentials</span>
+        </div>
+
+        {/* Pre-filled Credentials Form */}
+        <form onSubmit={handleSubmit} className="auth-form">
           <div className="auth-field">
-            <label>Email Address</label>
+            <label>Demo Shop Email</label>
             <div className="input-wrapper">
               <Mail size={16} className="input-icon" />
               <input
                 type="email"
                 required
-                placeholder="shopkeeper@example.com"
+                placeholder="demo@shopcopilot.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -162,49 +128,16 @@ export default function LoginModal({ onLoginSuccess, apiBase }) {
           <button type="submit" disabled={loading} className="auth-submit-btn">
             {loading ? (
               'Processing...'
-            ) : isRegister ? (
-              <>
-                <span>Create Account</span>
-                <UserPlus size={18} />
-              </>
             ) : (
               <>
-                <span>Sign In</span>
+                <span>Sign In to Demo Shop</span>
                 <LogIn size={18} />
               </>
             )}
           </button>
         </form>
-
-        {/* Demo Login Button */}
-        <div className="auth-divider">
-          <span>or use demo store</span>
-        </div>
-
-        <button type="button" onClick={handleDemoLogin} disabled={loading} className="demo-login-btn">
-          <span>Login to Sah's Store (Demo)</span>
-          <ArrowRight size={16} />
-        </button>
-
-        {/* Toggle Mode */}
-        <div className="auth-footer">
-          {isRegister ? (
-            <p>
-              Already have a shop account?{' '}
-              <button type="button" onClick={() => setIsRegister(false)} className="auth-toggle-link">
-                Sign In
-              </button>
-            </p>
-          ) : (
-            <p>
-              New shopkeeper?{' '}
-              <button type="button" onClick={() => setIsRegister(true)} className="auth-toggle-link">
-                Create Account
-              </button>
-            </p>
-          )}
-        </div>
       </div>
     </div>
   );
 }
+
