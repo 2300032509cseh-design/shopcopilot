@@ -34,16 +34,16 @@ export default function ReorderModal({ reorderData, onClose }) {
   };
 
   return (
-    <div className="reorder-modal-backdrop">
-      <div className="glass-card reorder-modal-card">
+    <div className="reorder-modal-backdrop" onClick={onClose}>
+      <div className="glass-card reorder-modal-card" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className="reorder-modal-header">
           <div className="reorder-title">
             <ShoppingBag size={22} className="reorder-icon" />
             <span>Suggested Purchase Order</span>
           </div>
-          <button type="button" className="close-btn" onClick={onClose} title="Close">
-            <X size={20} />
+          <button type="button" className="modal-close-cross-btn" onClick={onClose} title="Close / Go Back">
+            <X size={22} />
           </button>
         </div>
 
@@ -113,9 +113,14 @@ export default function ReorderModal({ reorderData, onClose }) {
 
         {/* Action Buttons */}
         <div className="reorder-modal-actions">
+          <button type="button" className="back-close-btn" onClick={onClose} title="Back to dashboard">
+            <X size={16} />
+            <span>Back / Close</span>
+          </button>
+
           <button type="button" className="btn-secondary copy-btn" onClick={handleCopy}>
             {copied ? <Check size={16} color="#10B981" /> : <Copy size={16} />}
-            <span>{copied ? 'Copied to Clipboard!' : 'Copy Text'}</span>
+            <span>{copied ? 'Copied!' : 'Copy Text'}</span>
           </button>
 
           <button type="button" className="whatsapp-send-btn" onClick={handleWhatsAppShare}>
